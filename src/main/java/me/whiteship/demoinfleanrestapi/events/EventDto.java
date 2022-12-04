@@ -1,25 +1,14 @@
 package me.whiteship.demoinfleanrestapi.events;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Builder @AllArgsConstructor @NoArgsConstructor
-@Getter @Setter @EqualsAndHashCode(of = "id")
-@Entity
-public class Event {
-    @Id @GeneratedValue
-    private Integer id;
+@Data @Builder @NoArgsConstructor @AllArgsConstructor
+public class EventDto {
     private String name;
     private String description;
     private LocalDateTime beginEnrollmentDateTime;
@@ -30,8 +19,4 @@ public class Event {
     private int basePrice; // (optional)
     private int maxPrice; // (optional)
     private int limitOfEnrollment;
-    private boolean offline;
-    private boolean free;
-    @Enumerated(EnumType.STRING)
-    private EventStatus eventStatus = EventStatus.DRAFT;
 }
