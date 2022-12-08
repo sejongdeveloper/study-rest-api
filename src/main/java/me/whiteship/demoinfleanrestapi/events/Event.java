@@ -6,12 +6,15 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import me.whiteship.demoinfleanrestapi.accounts.Account;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Builder @AllArgsConstructor @NoArgsConstructor
@@ -35,6 +38,8 @@ public class Event {
     private boolean free;
     @Enumerated(EnumType.STRING)
     private EventStatus eventStatus = EventStatus.DRAFT;
+//    @ManyToOne
+//    private Account manager;
 
     public void update() {
         // Update free
