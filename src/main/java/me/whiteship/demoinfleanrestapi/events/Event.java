@@ -1,5 +1,6 @@
 package me.whiteship.demoinfleanrestapi.events;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -7,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import me.whiteship.demoinfleanrestapi.accounts.Account;
+import me.whiteship.demoinfleanrestapi.accounts.AccountSerializer;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -38,8 +40,9 @@ public class Event {
     private boolean free;
     @Enumerated(EnumType.STRING)
     private EventStatus eventStatus = EventStatus.DRAFT;
-//    @ManyToOne
-//    private Account manager;
+    @ManyToOne
+    @JsonSerialize(using = AccountSerializer.class)
+    private Account manager;
 
     public void update() {
         // Update free
