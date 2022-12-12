@@ -1,6 +1,7 @@
 package me.whiteship.demoinfleanrestapi.accounts;
 
 import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -30,6 +31,14 @@ public class AccountServiceTest {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    AccountRepository accountRepository;
+
+    @Before
+    public void setUp() {
+        accountRepository.deleteAll();
+    }
 
     @Test
     public void findByUsername() {
